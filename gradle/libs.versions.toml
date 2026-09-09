@@ -1,0 +1,19 @@
+[versions]
+# Alinhados com o ChartPatternTracker, primeiro consumidor da library.
+agp = "9.2.1"
+kotlin = "2.2.10"
+firebaseBom = "33.16.0"
+junit = "4.13.2"
+dokka = "2.0.0"
+mavenPublish = "0.33.0"
+
+[libraries]
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+
+[plugins]
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

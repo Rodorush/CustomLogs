@@ -1,0 +1,24 @@
+# Normalização de quebras de linha.
+# Encerra o churn CRLF<->LF recorrente entre Windows e WSL: o repositório
+# (blobs) e o working tree passam a usar LF, e o git deixa de marcar como
+# "modified" arquivos que só diferem no EOL.
+* text=auto eol=lf
+
+# Scripts batch do Windows continuam com CRLF
+*.bat text eol=crlf
+
+# Binários: nunca normalizar
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.jar  binary
+*.zip  binary
+*.jks  binary
+*.keystore binary
+*.ttf  binary
+*.otf  binary
+*.woff binary
+*.woff2 binary

@@ -1,0 +1,18 @@
+# Gradle
+.gradle/
+build/
+
+# Configuração local (caminho do SDK) e credenciais de publicação
+local.properties
+
+# IntelliJ / Android Studio
+*.iml
+.idea/
+.kotlin/
+
+# Logs
+*.log
+
+# Saídas de build
+out/
+captures/
