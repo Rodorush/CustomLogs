@@ -1,5 +1,4 @@
 import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -56,8 +55,17 @@ mavenPublishing {
         )
     )
 
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = false)
-    signAllPublications()
+    // Sem parâmetro: o destino é o Central Portal. O OSSRH antigo foi desligado em 2025.
+    publishToMavenCentral()
+
+    // O Central exige artefato assinado, mas exigir GPG sempre travaria qualquer build local e
+    // qualquer clone de terceiro em `publishToMavenLocal`. Assina quando há chave configurada
+    // (em ~/.gradle/gradle.properties, fora do repositório); sem ela, o build local segue.
+    if (providers.gradleProperty("signingInMemoryKey").isPresent ||
+        providers.gradleProperty("signing.keyId").isPresent
+    ) {
+        signAllPublications()
+    }
 
     coordinates(group.toString(), "customlogs", version.toString())
 
